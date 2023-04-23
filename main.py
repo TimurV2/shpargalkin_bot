@@ -7,9 +7,6 @@ telegram_token = str(os.environ['shpargalkin_bot'])
 bot = telebot.TeleBot(telegram_token)
 
 
-
-
-
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, 'Удачи на контрольной точке!!!',
@@ -25,5 +22,6 @@ def text_message_handler(message):
         case "Я знаю какой билет мне нужен!":
             sent = bot.send_message(message.chat.id, 'Напиши номер билета цифрами')
             bot.register_next_step_handler(sent, find_crtn_qstn)
+
 
 bot.polling(none_stop=True)
